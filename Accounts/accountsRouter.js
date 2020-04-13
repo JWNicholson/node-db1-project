@@ -66,11 +66,11 @@ router.delete('/:id', (req,res)=>{
     db('accounts')
         .where({ id: id })
         .del()
-        .then(numberDeleted => 
-            numberDeleted > 0 ? 
-            res.status(200).json({message: `The account with the id of ${id} was successfully deleted`})
+        .then(idDeleted => 
+            idDeleted > 0 ? 
+            res.status(200).json({message: "Successfully deleted."})
             :
-            res.status(500).json({message: `can't delete the account with the id of ${id} because it does not exist`})
+            res.status(500).json({message: "Could not find that account"})
             )
              .catch(err => res.status(500).json({message: err}));
 });
